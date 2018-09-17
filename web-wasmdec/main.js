@@ -12,7 +12,7 @@
 }`;
     let out = txt => {
         outEditor.setValue(txt, -1);
-    }, decompile = inputWasm => {
+    }, decompileWast = inputWasm => {
         let decompiler = new Wasmdec.Decompiler(true, false,
                                                 'wast', inputWasm);
         let success = decompiler.decompile();
@@ -42,5 +42,17 @@
         outEditor.commands.commmandKeyBinding = {};
         outEditor.textInput.getElement().disabled = true;
         outEditor.setValue(defaultOutput, -1);
+        document.getElementById('decompileBtn').onclick = e => {
+            let wasm = input();
+            let output = decompileWast(wasm);
+            if (!output) {
+                out(`/*
+                Decompilation failed :(
+                Check for syntax issues!
+                */`);
+                return;
+            }
+            out(output);
+        }
     }
 })();
