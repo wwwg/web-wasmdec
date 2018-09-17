@@ -1,8 +1,9 @@
-* {
-    font-family: ubuntu;
-}
+
 body {
     background-color: #ffffff;
+}
+.ace_editor, .ace_editor div {
+    font-family: 'Ubuntu Mono' monospace !important;
 }
 #input, #output {
     font-family: 'Ubuntu Mono', monospace !important;
@@ -19,6 +20,7 @@ body {
     resize: none;
 }
 #input_panel, #output_panel {
+    font-family: 'Ubuntu Mono', monospace !important;
     position: absolute;
     display: inline-block;
     width: 47%;
@@ -33,7 +35,9 @@ body {
 }
 #header {
     font-size: 150%;
+    font-family: ubuntu;
 }
 #decompileBtn {
     font-size: 100%;
+    font-family: ubuntu;
 }
