@@ -1,7 +1,13 @@
 * {
     font-family: ubuntu !important;
 }
+body {
+    background-color: #000000;
+}
 #input, #output {
+    background-color: #1a1a1a;
+    border: none;
+    color: white;
     margin: none;
     padding: none;
     display: block;
