@@ -23,6 +23,8 @@
         // decompiler must be manually freed because it's a C++ object allocated on the heap
         decompiler.destroy();
         return res;
+    }, input = () => {
+        return inEditor.getValue();
     }
     window.onload = () => {
         window.inEditor = ace.edit("input");
