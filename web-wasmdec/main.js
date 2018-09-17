@@ -13,16 +13,20 @@
     let out = txt => {
         outEditor.setValue(txt, -1);
     }, decompileWast = inputWasm => {
-        let decompiler = new Wasmdec.Decompiler(true, false,
+        try {
+            let decompiler = new Wasmdec.Decompiler(true, false,
                                                 'wast', inputWasm);
-        let success = decompiler.decompile();
-        if (!success) {
+            let success = decompiler.decompile();
+            if (!success) {
+                return null;
+            }
+            let res = decompiler.getDecompiledCode();
+            // decompiler must be manually freed because it's a C++ object allocated on the heap
+            decompiler.destroy();
+            return res;
+        } catch (e) {
             return null;
         }
-        let res = decompiler.getDecompiledCode();
-        // decompiler must be manually freed because it's a C++ object allocated on the heap
-        decompiler.destroy();
-        return res;
     }, input = () => {
         return inEditor.getValue();
     }
