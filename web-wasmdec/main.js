@@ -10,12 +10,15 @@
     const defaultOutput = `int fn_addTwo(int arg0, int arg1) {
 	return arg0 + arg1;
 }`;
+    let out = txt => {
+        outEditor.setValue(txt, -1);
+    }
     window.onload = () => {
-        let inEditor = ace.edit("input");
+        window.inEditor = ace.edit("input");
         inEditor.session.setMode("ace/mode/lisp");
         inEditor.setValue(defaultInput, -1);
         // setup output
-        let outEditor = ace.edit('output');
+        window.outEditor = ace.edit('output');
         outEditor.session.setMode("ace/mode/c_cpp");
         outEditor.setOptions({
             readOnly: true,
