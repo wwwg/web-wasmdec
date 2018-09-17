@@ -5,7 +5,8 @@ body {
     background-color: #000000;
 }
 #input, #output {
-    background-color: #1a1a1a;
+    font-size: 125%;
+    background-color: #0d0d0d;
     border: none;
     color: white;
     margin: none;
@@ -16,19 +17,16 @@ body {
     height: 100%;
     resize: none;
 }
-#input_panel {
+#input_panel, #output_panel {
     position: absolute;
-    top: 10%;
-    left: 2%;
     display: inline-block;
     width: 47%;
-    height: 75%;
+    height: 85%;
+    top: 12%;
+}
+#input_panel {
+    left: 2%;
 }
 #output_panel {
-    position: absolute;
-    top: 10%;
     right: 2%;
-    display: inline-block;
-    width: 47%;
-    height: 75%;
 }
