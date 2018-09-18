@@ -29,7 +29,8 @@
 	)
 	(export "addTwo" $addTwo)
 )`,
-        'emcc': `(module
+        'emcc': `;; Simple Emscripten-compiled C program
+ (module
  (type $FUNCSIG$vii (func (param i32 i32)))
  (type $FUNCSIG$vi (func (param i32)))
  (type $FUNCSIG$iii (func (param i32 i32) (result i32)))
@@ -334,7 +335,8 @@
   (call $runPostSets)
  )
 )`,
-        'switch': `(module
+        'switch': `;; Switch routine in C compiled to wasm
+ (module
  (type $FUNCSIG$vii (func (param i32 i32)))
  (type $FUNCSIG$vi (func (param i32)))
  (type $FUNCSIG$iii (func (param i32 i32) (result i32)))
