@@ -38,6 +38,9 @@ body {
     font-family: ubuntu;
     background-color: #262626;
 }
+.mdl-layout__drawer-button {
+    background-color: #262626 !important;
+}
 #selectFileBtn {
     background-color: #808080;
 }
