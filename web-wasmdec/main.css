@@ -38,3 +38,9 @@ body {
     font-family: ubuntu;
     background-color: #262626;
 }
+#selectFileBtn {
+    background-color: #808080;
+}
+#decompileBtn {
+    background-color: #8c8c8c;
+}
