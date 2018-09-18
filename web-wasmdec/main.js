@@ -25,6 +25,8 @@
             decompiler.destroy();
             return res;
         } catch (e) {
+            console.error("web-wasmdec: caught error when decompiling:");
+            console.log(e);
             return null;
         }
     }, input = () => {
