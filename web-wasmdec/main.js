@@ -717,5 +717,17 @@
             input.type = 'file';
             input.click();
         }
+        window.lastTime = null;
+        inEditor.textInput.getElement().addEventListener('keydown', () => {
+            lastTime = Date.now();
+        });
+        setInterval(() => {
+            if (!lastTime) return;
+            let changeT = Date.now() - lastTime;
+            if (changeT >= 500) {
+                document.getElementById('decompileBtn').click();
+                lastTime = null;
+            }
+        }, 100);
     }
 })();
