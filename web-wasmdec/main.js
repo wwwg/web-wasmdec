@@ -635,6 +635,23 @@
         }
     }, input = () => {
         return inEditor.getValue();
+    }, decompileWasm = inputWasm => {
+        try {
+            let decompiler = new Wasmdec.Decompiler(true, false,
+                                                'wasm', inputWasm);
+            let success = decompiler.decompile();
+            if (!success) {
+                return null;
+            }
+            let res = decompiler.getDecompiledCode();
+            // decompiler must be manually freed because it's a C++ object allocated on the heap
+            decompiler.destroy();
+            return res;
+        } catch (e) {
+            console.error("web-wasmdec: caught error when decompiling:");
+            console.log(e);
+            return null;
+        }
     }
     window.onload = () => {
         window.inEditor = ace.edit("input");
@@ -656,13 +673,49 @@
             let wasm = input();
             let output = decompileWast(wasm);
             if (!output) {
-                out(`/*
-                Decompilation failed :(
-                Check for syntax issues!
-                */`);
+                out(`/* Decompilation failed :( */`);
                 return;
             }
             out(output);
+        }
+        document.getElementById('selectFileBtn').onclick = e => {
+            let input = document.createElement('input');
+            input.addEventListener("change", () => {
+                let f = input.files[0];
+                var reader = new FileReader();
+                reader.onload = function(evt) {
+                    if(evt.target.readyState != 2) return;
+                    if(evt.target.error) {
+                        alert('Error while reading file');
+                        return;
+                    }
+            
+                    const f_out = evt.target.result;
+                    const ext = f.name.split('.').pop();
+                    if (ext !== 'wast' && ext !== 'wasm') {
+                        alert('Invalid file! use a .wast or .wasm!');
+                        return;
+                    }
+                    if (ext == 'wasm') {
+                        inEditor.setValue(';; "' + f.name + '" (Selected wasm binary file)', -1);
+                        let output = decompileWasm(f_out);
+                        if (!output) {
+                            out(`/*
+                            Decompilation failed :(
+                            Check for syntax issues!
+                            */`);
+                            return;
+                        }
+                        out(output);
+                    } else {
+                        input(f_out);
+                        document.getElementById('decompileBtn').click();
+                    }
+                };
+                reader.readAsText(f);
+            }, false);
+            input.type = 'file';
+            input.click();
         }
     }
 })();
