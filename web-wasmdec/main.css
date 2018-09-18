@@ -41,6 +41,12 @@ body {
 .mdl-layout__drawer-button {
     background-color: #262626 !important;
 }
+.mdl-layout__obfuscator {
+    z-index: 5;
+}
+.mdl-layout__drawer {
+    z-index: 6;
+}
 #selectFileBtn {
     background-color: #808080;
 }
