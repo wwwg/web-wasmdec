@@ -708,7 +708,7 @@
                         }
                         out(output);
                     } else {
-                        input(f_out);
+                        inEditor.setValue(f_out, -1);
                         document.getElementById('decompileBtn').click();
                     }
                 };
