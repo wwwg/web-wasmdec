@@ -10,6 +10,10 @@
     const defaultOutput = `int fn_addTwo(int arg0, int arg1) {
 	return arg0 + arg1;
 }`;
+    window.example = exString => {
+        // hide the drawer;
+        $('.mdl-layout__drawer').toggleClass('is-visible');
+    }
     let out = txt => {
         outEditor.setValue(txt, -1);
     }, decompileWast = inputWasm => {
