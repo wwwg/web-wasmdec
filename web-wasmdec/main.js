@@ -98,7 +98,7 @@
             
                     const f_out = evt.target.result;
                     const ext = f.name.split('.').pop();
-                    if (ext !== 'wast' && ext !== 'wasm') {
+                    if (ext !== 'wast' && ext !== 'wasm' && ext !== 'wat') {
                         alert('Invalid file! use a .wast or .wasm!');
                         return;
                     }
@@ -113,7 +113,7 @@
                             return;
                         }
                         out(output);
-                    } else {
+                    } else if ((ext == 'wast' || ext == 'wat')) {
                         inEditor.setValue(f_out, -1);
                         document.getElementById('decompileBtn').click();
                     }
