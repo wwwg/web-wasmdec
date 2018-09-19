@@ -661,14 +661,6 @@
         // setup output
         window.outEditor = ace.edit('output');
         outEditor.session.setMode("ace/mode/c_cpp");
-        outEditor.setOptions({
-            readOnly: true,
-            highlightActiveLine: false,
-            highlightGutterLine: false
-        });
-        outEditor.renderer.$cursorLayer.element.style.opacity = 0;
-        outEditor.commands.commmandKeyBinding = {};
-        outEditor.textInput.getElement().disabled = true;
         outEditor.setValue(defaultOutput, -1);
         document.getElementById('decompileBtn').onclick = e => {
             let wasm = input();
