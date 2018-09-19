@@ -8,22 +8,50 @@ window.examples = {
         (export "addTwo" $addTwo)
     )`,
     'funcs': `(module
-(type $varg_i32 (func (result i32)))
-(func $addTwo (param i32 i32) (result i32)
-    (return
-        (i32.add
-            (get_local 0)
-            (get_local 1)
+        (type $varg_i32 (func (result i32)))
+        (func $add (param i32 i32) (result i32)
+            (return
+                (i32.add
+                    (get_local 0)
+                    (get_local 1)
+                )
+            )
         )
-    )
-)
-(func $getOne (type $varg_i32)
-    (return
-        (i32.const 1)
-    )
-)
-(export "addTwo" $addTwo)
-)`,
+        (func $subtract (param i32 i32) (result i32)
+            (return
+                (i32.sub
+                    (get_local 0)
+                    (get_local 1)
+                )
+            )
+        )
+        (func $multiply (param i32 i32) (result i32)
+            (return
+                (i32.mul
+                    (get_local 0)
+                    (get_local 1)
+                )
+            )
+        )
+        (func $divide (param i32 i32) (result i32)
+            (return
+                (i32.div
+                    (get_local 0)
+                    (get_local 1)
+                )
+            )
+        )
+        (func $getOne (type $varg_i32)
+            (return
+                (i32.const 1)
+            )
+        )
+        (func $getFortyTwo (type $varg_i32)
+            (return
+                (i32.const 42)
+            )
+        )
+        )`,
     'emcc': `;; Simple Emscripten-compiled C program
 (module
 (type $FUNCSIG$vii (func (param i32 i32)))
