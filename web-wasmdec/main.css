@@ -42,10 +42,10 @@ body {
     background-color: #262626 !important;
 }
 .mdl-layout__obfuscator {
-    z-index: 5;
+    z-index: 12;
 }
 .mdl-layout__drawer {
-    z-index: 10;
+    z-index: 13;
 }
 #selectFileBtn {
     background-color: #808080;
