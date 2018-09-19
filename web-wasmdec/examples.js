@@ -597,7 +597,8 @@ window.examples = {
 (call $runPostSets)
 )
 )`,
-'webdsp': `(module
+'webdsp': `;; WebDSP: A signal processing library for the web compiled from C/C++ to WebAssembly
+(module
     (type $0 (func (param f64) (result i32)))
     (type $1 (func (param i32 i32 i32) (result i32)))
     (type $2 (func (param i32) (result i32)))
