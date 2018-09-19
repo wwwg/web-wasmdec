@@ -51,6 +51,7 @@ body {
     background-color: #666666;
 }
 #decompileBtn {
+    display: none;
     background-color: #8c8c8c;
 }
 #loadingOverlay {
