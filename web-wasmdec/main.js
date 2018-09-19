@@ -627,6 +627,7 @@
             let res = decompiler.getDecompiledCode();
             // decompiler must be manually freed because it's a C++ object allocated on the heap
             decompiler.destroy();
+            res = res.replace(/\/\/ Decompiled.*\/\/ End of preamble/gim, ""); 
             return res;
         } catch (e) {
             console.error("web-wasmdec: caught error when decompiling:");
