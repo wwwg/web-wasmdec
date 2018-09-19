@@ -7,6 +7,7 @@ window.examples = {
         )
         (export "addTwo" $addTwo)
     )`,
+    'calls': ` `,
     'funcs': `(module
         (type $varg_i32 (func (result i32)))
         (func $add (param i32 i32) (result i32)
