@@ -45,7 +45,7 @@ body {
     z-index: 5;
 }
 .mdl-layout__drawer {
-    z-index: 6;
+    z-index: 10;
 }
 #selectFileBtn {
     background-color: #808080;
