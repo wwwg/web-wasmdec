@@ -656,6 +656,9 @@
         }
     }
     window.onload = () => {
+        Wasmdec.Module.addOnPostRun(() => {
+            $("#loadingOverlay").fadeOut(150);
+        });
         window.inEditor = ace.edit("input");
         inEditor.session.setMode("ace/mode/lisp");
         inEditor.setValue(defaultInput, -1);
