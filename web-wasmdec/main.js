@@ -7,7 +7,8 @@
 	)
 	(export "addTwo" $addTwo)
 )`;
-    const defaultOutput = `int fn_addTwo(int arg0, int arg1) {
+    const defaultOutput = `// Click the menu icon in the top left to view more examples
+    int fn_addTwo(int arg0, int arg1) {
 	return arg0 + arg1;
 }`;
     window.example = exString => {
