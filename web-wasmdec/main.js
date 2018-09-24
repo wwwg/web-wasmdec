@@ -36,7 +36,7 @@
             let res = decompiler.getDecompiledCode();
             // decompiler must be manually freed because it's a C++ object allocated on the heap
             decompiler.destroy();
-            res = res.replace(/\/\/ Decompiled([\s\S]*?)\/\/ End of preamble\n\n/gim, ""); 
+            res = res.replace(/\/\* Preamble: ([\s\S]*?)\/\/ End of preamble\n\n/gim, ""); 
             res = res.trim();
             return res;
         } catch (e) {
@@ -120,7 +120,8 @@
                     }
                     if (ext == 'wasm') {
                         inEditor.setValue(';; "' + f.name + '" (Selected wasm binary file)', -1);
-                        let output = decompileWasm(f_out);
+                        let ptr = allocStr(f_out); // copy the entire string to wasm virtual memory
+                        let output = decompileWasm(ptr);
                         if (!output) {
                             out(`/*
                             Decompilation failed :(
