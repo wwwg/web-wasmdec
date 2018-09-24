@@ -63,8 +63,24 @@
             console.log(e);
             return null;
         }
+    }, allocStr = str => {
+        let _malloc = Wasmdec.Module._malloc,
+            u8 = new Uint8Array(Wasmdec.Module.wasmMemory.buffer),
+            len = str.length,
+            ptr = _malloc(len + 1),
+            i = 0;
+        for (i = 0; i < len; ++i) {
+            let offset = i + ptr;
+            u8[offset] = str.charCodeAt(i);
+        }
+        ++i;
+        u8[i] = 0x0; // null terminator
+        return ptr;
+    }, freeStr = ptr => {
+        return Wasmdec.Module._free(ptr);
     }
     window.onload = () => {
+        window.allocStr = allocStr;
         Wasmdec.Module.addOnPostRun(() => {
             $("#loadingOverlay").fadeOut(150);
         });
