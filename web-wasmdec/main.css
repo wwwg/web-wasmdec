@@ -38,6 +38,9 @@ body {
     font-family: Helvetica;
     background-color: #262626;
 }
+#inner-header {
+    cursor: pointer !important;
+}
 .mdl-layout__drawer-button {
     background-color: #262626 !important;
 }
