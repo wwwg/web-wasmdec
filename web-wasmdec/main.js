@@ -24,6 +24,9 @@
         }, 250);
     }
     let out = txt => {
+        txt = js_beautify(txt,
+            { indent_size: 4, space_in_empty_paren: true
+        });
         outEditor.setValue(txt, -1);
     }, decompileWast = inputWasm => {
         try {
